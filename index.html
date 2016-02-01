@@ -31,7 +31,7 @@ text {
 <script>
 
 var width = 1000,
-    height = 800;
+    height = 600;
 
 var color = d3.scale.category20();
 
@@ -58,8 +58,10 @@ var force = d3.layout.force()
 var nodes = force.nodes(),
     links = force.links();
 
+var dataFile = location.hash ? location.hash.substring(1) : "samples/gradle-model.json";
+console.log("Loading data file", dataFile);
 
-d3.json("samples/gradle-model.json", function(error, events) {
+d3.json(dataFile, function(error, events) {
   if (error) throw error;
 
   var commands = processEvents(events);
