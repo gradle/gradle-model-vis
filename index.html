@@ -24,11 +24,13 @@ text {
 
 </style>
 <body>
-<input id="back" type="button" value="-"/>
-<input id="time" type="range" width="100%"/>
-<input id="forward" type="button" value="+"/>
+<button id="back">–</button>
+<input id="time" type="range" width="100"/>
+<button id="forward">+</button>
+
 <script src="lib/d3.v3.js"></script>
 <script src="lib/underscore.js"></script>
+<script src="lib/jquery-2.2.0.min.js"></script>
 <script>
 
 var width = 1000,
@@ -92,10 +94,19 @@ d3.json(dataFile, function(error, events) {
   var commands = processEvents(events);
   var time = 0;
 
-  var timeInput = document.getElementById("time");
-  timeInput.min = 0;
-  timeInput.max = events.length;
-  timeInput.value = 0;
+  $("#time").attr({min: 0, max: events.length}).val(0);
+  $("#back").click(function () {
+    var value = parseInt($("#time").val());
+    value = Math.max(0, value - 1);
+    $("#time").val(value);
+    $("#time").trigger("input");
+  });
+  $("#forward").click(function () {
+    var value = parseInt($("#time").val());
+    value = Math.min(events.length, value + 1);
+    $("#time").val(value);
+    $("#time").trigger("input");
+  });
 
   var redrawUntil = function (targetTime) {
     if (time < targetTime) {
@@ -112,15 +123,8 @@ d3.json(dataFile, function(error, events) {
     repaint();
   }
 
-  document.getElementById("back").addEventListener("click", function (element) {
-    redrawUntil(Math.max(time - 1, 0));
-  });
-  document.getElementById("forward").addEventListener("click", function (element) {
-    redrawUntil(Math.min(time + 1, events.length));
-  });
-  timeInput.addEventListener("input", function (element) {
-    var value = parseInt(element.target.value);
-    redrawUntil(value);
+  $("#time").on("input", function () {
+    redrawUntil($(this).val());
   });
 
   // redrawUntil(events.length / 2);
