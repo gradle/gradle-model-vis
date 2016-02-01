@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font-size: 8pt;
+  font-family: monospace;
+}
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+text {
+  stroke: black;
+}
+
+</style>
+<body>
+<input id="back" type="button" value="-"/>
+<input id="time" type="range" width="100%"/>
+<input id="forward" type="button" value="+"/>
+<script src="lib/d3.v3.js"></script>
+<script src="lib/underscore.js"></script>
+<script>
+
+var width = 1000,
+    height = 800;
+
+var color = d3.scale.category20();
+
+var stateIndexByName = {
+  Registered: 1,
+  Discovered: 2,
+  Created: 3,
+  DefaultsApplied: 4,
+  Initialized: 5,
+  Mutated: 6,
+  Finalized: 7,
+  SelfClosed: 8,
+  GraphClosed: 9,
+};
+
+var svg = d3.select("body").append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+var force = d3.layout.force()
+  .charge(-120)
+  .linkDistance(80)
+  .size([width, height]);
+var nodes = force.nodes(),
+    links = force.links();
+
+
+d3.json("samples/gradle-model.json", function(error, events) {
+  if (error) throw error;
+
+  var commands = processEvents(events);
+  var time = 0;
+
+  var timeInput = document.getElementById("time");
+  timeInput.min = 0;
+  timeInput.max = events.length;
+  timeInput.value = 0;
+
+  var redrawUntil = function (targetTime) {
+    if (time < targetTime) {
+      while (time < targetTime) {
+        commands[time].forward();
+        time++;
+      }
+    } else {
+      while (time > targetTime) {
+        time--;
+        commands[time].backward();
+      }
+    }
+    repaint();
+  }
+
+  document.getElementById("back").addEventListener("click", function (element) {
+    redrawUntil(Math.max(time - 1, 0));
+  });
+  document.getElementById("forward").addEventListener("click", function (element) {
+    redrawUntil(Math.min(time + 1, events.length));
+  });
+  timeInput.addEventListener("input", function (element) {
+    var value = parseInt(element.target.value);
+    redrawUntil(value);
+  });
+
+  // redrawUntil(events.length / 2);
+});
+
+function repaint() {
+  var link = svg.selectAll(".link")
+      .data(links);
+
+  link.enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+  link.exit().remove();
+
+  var node = svg.selectAll(".node")
+    .data(nodes);
+
+  var nodeGroup = node.enter()
+      .append("g")
+      .attr("class", "node");
+
+  var nodeCircle = nodeGroup.append("circle")
+      .attr("r", 15)
+      .call(force.drag);
+
+  var nodeText = nodeGroup.append("text")
+      .text(function(d) { return d.name; })
+      .style("fill", "#000000");
+  node.exit().remove();
+
+  force.on("tick", function () {
+    node
+      .style("fill", function(d) {
+        var stateIndex = stateIndexByName[d.state];
+        return color(stateIndex);
+      });
+
+    node
+      .attr("transform", function (d) {
+        var transform = "translate(" + d.x + "," + d.y + ")";
+        return transform;
+      });
+    // nodeCircle
+    //     .attr("cx", function(d) { return d.x; })
+    //     .attr("cy", function(d) { return d.y; });
+    // nodeText
+    //     .attr("x", function(d) { return d.x; })
+    //     .attr("y", function(d) { return d.y; });
+
+    link
+      .attr("x1", function (d) {
+          return d.source.x;
+      })
+      .attr("y1", function (d) {
+          return d.source.y;
+      })
+      .attr("x2", function (d) {
+          return d.target.x;
+      })
+      .attr("y2", function (d) {
+          return d.target.y;
+      });
+  });
+
+  // Restart the force layout.
+  force
+      // .charge(-120)
+      // .linkDistance(80)
+      // .size([width, height])
+      .start();
+}
+
+var findNodeIndex = function (path) {
+    for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].name == path) {
+            return i;
+        }
+    };
+};
+
+// Add and remove elements on the graph object
+var addNode = function (path) {
+    nodes.push({
+      "name": path,
+      "state": "Registered"
+    });
+};
+
+var removeNode = function (path) {
+    var i = 0;
+    var nodeIndex = findNodeIndex(path);
+    var node = nodes[nodeIndex];
+    while (i < links.length) {
+      var link = links[i];
+      if (link.source == node || link.target == node) {
+        links.splice(i, 1);
+      }
+      else {
+        i++;
+      }
+    }
+    nodes.splice(nodeIndex, 1);
+};
+
+var addLink = function (source, target, value) {
+  var sourceIdx = findNodeIndex(source);
+  var sourceNode = nodes[sourceIdx];
+  if (!sourceNode) {
+    throw "No source node for " + source;
+  }
+  var targetIdx = findNodeIndex(target);
+  var targetNode = nodes[targetIdx];
+  if (!targetNode) {
+    throw "No target node for " + target;
+  }
+  links.push({"source": sourceNode, "target": targetNode, "value": value});
+};
+
+var removeLink = function (source, target) {
+    for (var i = 0; i < links.length; i++) {
+        if (links[i].source.id == source && links[i].target.id == target) {
+            links.splice(i, 1);
+            break;
+        }
+    }
+};
+
+var setState = function (path, state) {
+  var node = nodes[findNodeIndex(path)];
+  node.state = state;
+}
+
+function processEvents(events) {
+  var existingNodes = {};
+  var commands = [];
+  events.forEach(function (event) {
+    var existingNode = existingNodes[event.path];
+    if (existingNode) {
+      var nextState = event.state;
+      var previousState = existingNode.state;
+      commands.push({
+        forward: function () {
+          console.log("-> " + event.path + " -> " + nextState);
+          setState(event.path, nextState);
+        },
+        backward: function () {
+          console.log("<- " + event.path + " -> " + previousState);
+          setState(event.path, previousState);
+        }
+      });
+      existingNode.state = event.state;
+    } else {
+      commands.push({
+        forward: function () {
+          console.log("++ " + event.path);
+          addNode(event.path);
+          if (event.path) {
+            var idx = event.path.lastIndexOf('.');
+            var parentPath = idx === -1 ? "" : event.path.substring(0, idx);
+            addLink(event.path, parentPath, 1);
+          }
+        },
+        backward: function () {
+          console.log("-- " + event.path);
+          removeNode(event.path);
+        }
+      });
+      existingNodes[event.path] = {
+        path: event.path,
+        state: event.state
+      };
+    }
+  });
+  return commands;
+}
+
+</script>

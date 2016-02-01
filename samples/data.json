@@ -1,0 +1,32 @@
+[
+    {
+        "path": "",
+        "type": "state-change",
+        "state": "Registered"
+    },
+    {
+        "path": "components",
+        "type": "state-change",
+        "state": "Registered"
+    },
+    {
+        "path": "components.main",
+        "type": "state-change",
+        "state": "Registered"
+    },
+    {
+        "path": "components.main.binaries",
+        "type": "state-change",
+        "state": "Registered"
+    },
+    {
+        "path": "components.main.binaries.jar",
+        "type": "state-change",
+        "state": "Registered"
+    },
+    {
+        "path": "components.main.binaries.jar",
+        "type": "state-change",
+        "state": "Discovered"
+    }
+]
