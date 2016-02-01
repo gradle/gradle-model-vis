@@ -36,21 +36,45 @@ var width = 1000,
 
 var color = d3.scale.category20();
 
-var stateIndexByName = {
-  Registered: 1,
-  Discovered: 2,
-  Created: 3,
-  DefaultsApplied: 4,
-  Initialized: 5,
-  Mutated: 6,
-  Finalized: 7,
-  SelfClosed: 8,
-  GraphClosed: 9,
+var stateColors = {
+  Registered: "#aec7e8",
+  Discovered: "#1f77b4",
+  Created: "#2ca02c",
+  DefaultsApplied: "#ffbb78",
+  Initialized: "#ff7f0e",
+  Mutated: "#d62728",
+  Finalized: "#e377c2",
+  SelfClosed: "#c7c7c7",
+  GraphClosed: "#7f7f7f",
 };
 
 var svg = d3.select("body").append("svg")
   .attr("width", width)
   .attr("height", height);
+
+var legend = svg.selectAll(".legend")
+  .data(Object.keys(stateColors));
+
+var legendGroup = legend.enter()
+    .append("g")
+    .attr("class", "legend");
+
+var legendCircle = legendGroup.append("circle")
+    .attr("r", 10)
+    .attr("cx", 10)
+    .attr("cy", function (d, idx) {
+      return 10 + idx * 22;
+    })
+    .attr("fill", function (d) { return stateColors[d]; });
+
+var legendText = legendGroup.append("text")
+    .attr("x", 22)
+    .attr("y", function (d, idx) {
+      return 13 + idx * 22;
+    })
+    .text(function(d) { return d; });
+legend.exit().remove();
+
 
 var force = d3.layout.force()
   .charge(-120)
@@ -130,8 +154,7 @@ function repaint() {
   force.on("tick", function () {
     node
       .style("fill", function(d) {
-        var stateIndex = stateIndexByName[d.state];
-        return color(stateIndex);
+        return stateColors[d.state];
       });
 
     node
