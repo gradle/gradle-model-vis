@@ -320,11 +320,11 @@ function processEvents(events) {
       var previousState = existingNode.state;
       commands.push({
         forward: function () {
-          console.log("-> " + event.path + " -> " + nextState);
+          console.log("-> " + event.path + ": " + previousState + " -> " + nextState);
           setState(event.path, nextState);
         },
         backward: function () {
-          console.log("<- " + event.path + " -> " + previousState);
+          console.log("<- " + event.path + ": " + nextState + " -> " + previousState);
           setState(event.path, previousState);
         }
       });
