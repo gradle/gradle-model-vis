@@ -22,12 +22,19 @@ text {
   fill: black;
 }
 
+.controls, .controls button {
+  font-family: monospace;
+  font-size: 10pt;
+}
+
 </style>
 <body>
-<button id="back">–</button>
-<input id="time" type="range" width="100"/>
-<button id="forward">+</button>
-<button id="play-pause">&gt;&gt;</button>
+<div class="controls">
+  <button id="back">–</button>
+  <input id="time" type="range" width="100"/>
+  <button id="forward">+</button>
+  <button id="play-pause">&gt;&gt;</button>
+</div>
 
 <script src="lib/d3.v3.js"></script>
 <script src="lib/underscore.js"></script>
@@ -174,11 +181,20 @@ function repaint() {
       .attr("class", "node");
 
   var nodeCircle = nodeGroup.append("circle")
-      .attr("r", 15)
+      .attr("r", 8)
       .call(force.drag);
 
   var nodeText = nodeGroup.append("text")
-      .text(function(d) { return d.name; })
+      .text(function(d) {
+        var name = d.name;
+        var idx = name.lastIndexOf(".");
+        if (idx !== -1) {
+          name = name.substring(idx + 1);
+        }
+        return name ? name : "<ROOT>";
+      })
+      .attr("x", "9")
+      .attr("y", "3")
       .style("fill", "#000000");
   node.exit().remove();
 
