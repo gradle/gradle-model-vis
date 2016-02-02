@@ -1,4 +1,4 @@
-var Layout = function(width, height) {
+var ForceLayout = function(d3, width, height) {
     var force = d3.layout.force()
         .charge(-120)
         .linkDistance(80)
@@ -48,7 +48,9 @@ var Layout = function(width, height) {
             "name": path,
             "state": "Registered"
         });
-        if (parentPath !== null) {
+        if (path) {
+            var idx = path.lastIndexOf('.');
+            var parentPath = idx === -1 ? "" : path.substring(0, idx);
             addLink(path, parentPath, 1);
         }
     };

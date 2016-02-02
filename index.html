@@ -4,8 +4,6 @@
 <head>
     <style>
         svg {
-            font-size: 8pt;
-            font-family: monospace;
         }
 
         .node {
@@ -17,9 +15,12 @@
         .link {
             stroke: #999;
             stroke-opacity: .6;
+            fill: none;
         }
 
         text {
+            font-size: 10px;
+            font-family: sans-serif;
             stroke: none;
             fill: black;
         }
@@ -34,7 +35,8 @@
     <script src="lib/d3.v3.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/jquery-2.2.0.min.js"></script>
-    <script src="js/layout.js"></script>
+    <script src="js/force-layout.js"></script>
+    <script src="js/tree-layout.js"></script>
 </head>
 <body>
     <div class="controls">
@@ -45,7 +47,7 @@
     </div>
     <script>
         var width = 1000,
-            height = 600;
+            height = 1000;
 
         var stateColors = {
             Registered: "#aec7e8",
@@ -90,14 +92,13 @@
             });
         legend.exit().remove();
 
-
         var dataFile = location.hash ? location.hash.substring(1) : "samples/gradle-model.json";
         console.log("Loading data file", dataFile);
 
         d3.json(dataFile, function(error, events) {
             if (error) throw error;
 
-            var layout = new Layout(width, height);
+            var layout = new TreeLayout(d3, width, height);
 
             var commands = processEvents(events, layout);
             var time = 0;
@@ -163,8 +164,6 @@
             $("#time").on("input", function() {
                 redrawUntil($(this).val());
             });
-
-            // redrawUntil(events.length / 2);
         });
 
         function processEvents(events, layout) {
@@ -190,14 +189,7 @@
                     commands.push({
                         forward: function() {
                             console.log("++ " + event.path);
-                            var parentPath;
-                            if (event.path) {
-                                var idx = event.path.lastIndexOf('.');
-                                parentPath = idx === -1 ? "" : event.path.substring(0, idx);
-                            } else {
-                                parentPath = null;
-                            }
-                            layout.addNode(event.path, parentPath);
+                            layout.addNode(event.path);
                         },
                         backward: function() {
                             console.log("-- " + event.path);
