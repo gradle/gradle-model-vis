@@ -27,6 +27,7 @@ text {
 <button id="back">–</button>
 <input id="time" type="range" width="100"/>
 <button id="forward">+</button>
+<button id="play-pause">&gt;&gt;</button>
 
 <script src="lib/d3.v3.js"></script>
 <script src="lib/underscore.js"></script>
@@ -106,6 +107,22 @@ d3.json(dataFile, function(error, events) {
     value = Math.min(events.length, value + 1);
     $("#time").val(value);
     $("#time").trigger("input");
+  });
+  var playing = false;
+  var $playPause = $("#play-pause");
+  $playPause.click(function() {
+      if(!playing) {
+          var playLoop = function() {
+              $("#forward").trigger("click");
+              if(playing) setTimeout(playLoop, 200);
+          };
+          playing = true;
+          $playPause.text("||");
+          playLoop();
+      } else {
+          playing = false;
+          $playPause.text(">>");
+      }
   });
 
   var redrawUntil = function (targetTime) {
