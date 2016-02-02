@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 
 def transition = ~/Transitioning model element '(.+?)' to state ([a-zA-Z]+)/
 def registration = ~/"Registering model element '(.+?)'"/
-def data = [[path:'', type: 'state-changed', state: 'Created']]
+def data = []
 System.in.eachLine { line ->
     def match = transition.matcher(line)
     if (match) {
