@@ -1,11 +1,11 @@
 [
     {
-        "path": "<root>",
+        "path": "",
         "type": "state-changed",
         "state": "Discovered"
     },
     {
-        "path": "<root>",
+        "path": "",
         "type": "state-changed",
         "state": "Created"
     },
@@ -2727,111 +2727,6 @@
         "state": "GraphClosed"
     },
     {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "Created"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "Initialized"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "Mutated"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "Finalized"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "SelfClosed"
-    },
-    {
-        "path": "tasks.mainTestExecutable",
-        "type": "state-changed",
-        "state": "GraphClosed"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "Created"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "Initialized"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "Mutated"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "Finalized"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "SelfClosed"
-    },
-    {
-        "path": "tasks.linkMainTestExecutable",
-        "type": "state-changed",
-        "state": "GraphClosed"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "Created"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "Initialized"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "Mutated"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "Finalized"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "SelfClosed"
-    },
-    {
-        "path": "tasks.compileMainTestExecutableMainTestCpp",
-        "type": "state-changed",
-        "state": "GraphClosed"
-    },
-    {
         "path": "tasks.engineStaticLibrary",
         "type": "state-changed",
         "state": "Created"
@@ -3038,6 +2933,111 @@
     },
     {
         "path": "tasks.compileEngineSharedLibraryEngineCpp",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "path": "tasks.mainTestExecutable",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "path": "tasks.linkMainTestExecutable",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "path": "tasks.compileMainTestExecutableMainTestCpp",
         "type": "state-changed",
         "state": "GraphClosed"
     },
