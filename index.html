@@ -250,23 +250,24 @@ function repaint() {
       .start();
 }
 
-var findNodeIndex = function (path) {
-    for (var i = 0; i < nodes.length; i++) {
-        if (nodes[i].name == path) {
-            return i;
-        }
-    };
-};
+var Layout = function (nodes, links) {
+  var findNodeIndex = function (path) {
+      for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].name == path) {
+              return i;
+          }
+      };
+  };
 
-// Add and remove elements on the graph object
-var addNode = function (path) {
-    nodes.push({
-      "name": path,
-      "state": "Registered"
-    });
-};
+  // Add and remove elements on the graph object
+  this.addNode = function (path) {
+      nodes.push({
+        "name": path,
+        "state": "Registered"
+      });
+  };
 
-var removeNode = function (path) {
+  this.removeNode = function (path) {
     var i = 0;
     var nodeIndex = findNodeIndex(path);
     var node = nodes[nodeIndex];
@@ -280,35 +281,38 @@ var removeNode = function (path) {
       }
     }
     nodes.splice(nodeIndex, 1);
-};
+  };
 
-var addLink = function (source, target, value) {
-  var sourceIdx = findNodeIndex(source);
-  var sourceNode = nodes[sourceIdx];
-  if (!sourceNode) {
-    throw "No source node for " + source;
-  }
-  var targetIdx = findNodeIndex(target);
-  var targetNode = nodes[targetIdx];
-  if (!targetNode) {
-    throw "No target node for " + target;
-  }
-  links.push({"source": sourceNode, "target": targetNode, "value": value});
-};
-
-var removeLink = function (source, target) {
-    for (var i = 0; i < links.length; i++) {
-        if (links[i].source.id == source && links[i].target.id == target) {
-            links.splice(i, 1);
-            break;
-        }
+  this.addLink = function (source, target, value) {
+    var sourceIdx = findNodeIndex(source);
+    var sourceNode = nodes[sourceIdx];
+    if (!sourceNode) {
+      throw "No source node for " + source;
     }
+    var targetIdx = findNodeIndex(target);
+    var targetNode = nodes[targetIdx];
+    if (!targetNode) {
+      throw "No target node for " + target;
+    }
+    links.push({"source": sourceNode, "target": targetNode, "value": value});
+  };
+
+  this.removeLink = function (source, target) {
+      for (var i = 0; i < links.length; i++) {
+          if (links[i].source.id == source && links[i].target.id == target) {
+              links.splice(i, 1);
+              break;
+          }
+      }
+  };
+
+  this.setState = function (path, state) {
+    var node = nodes[findNodeIndex(path)];
+    node.state = state;
+  };
 };
 
-var setState = function (path, state) {
-  var node = nodes[findNodeIndex(path)];
-  node.state = state;
-}
+var layout = new Layout(nodes, links);
 
 function processEvents(events) {
   var existingNodes = {};
@@ -321,11 +325,11 @@ function processEvents(events) {
       commands.push({
         forward: function () {
           console.log("-> " + event.path + ": " + previousState + " -> " + nextState);
-          setState(event.path, nextState);
+          layout.setState(event.path, nextState);
         },
         backward: function () {
           console.log("<- " + event.path + ": " + nextState + " -> " + previousState);
-          setState(event.path, previousState);
+          layout.setState(event.path, previousState);
         }
       });
       existingNode.state = event.state;
@@ -333,16 +337,16 @@ function processEvents(events) {
       commands.push({
         forward: function () {
           console.log("++ " + event.path);
-          addNode(event.path);
+          layout.addNode(event.path);
           if (event.path) {
             var idx = event.path.lastIndexOf('.');
             var parentPath = idx === -1 ? "" : event.path.substring(0, idx);
-            addLink(event.path, parentPath, 1);
+            layout.addLink(event.path, parentPath, 1);
           }
         },
         backward: function () {
           console.log("-- " + event.path);
-          removeNode(event.path);
+          layout.removeNode(event.path);
         }
       });
       existingNodes[event.path] = {
