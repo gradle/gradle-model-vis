@@ -111,18 +111,28 @@ d3.json(dataFile, function(error, events) {
   var playing = false;
   var $playPause = $("#play-pause");
   $playPause.click(function() {
+      var stop = function() {
+        playing = false;
+        $playPause.text(">>");
+      };
       if(!playing) {
-          var playLoop = function() {
-              $("#forward").trigger("click");
-              if(playing) setTimeout(playLoop, 200);
-          };
-          playing = true;
-          $playPause.text("||");
-          playLoop();
-      } else {
-          playing = false;
-          $playPause.text(">>");
-      }
+      var playLoop = function() {
+        var $time = $("#time");
+        var cur = parseInt($time.val());
+        var max = parseInt($time.attr('max'));
+        if(cur<max) {
+          $("#forward").trigger("click");
+          if(playing) setTimeout(playLoop, 200);
+        } else {
+          stop();
+        }
+      };
+      playing = true;
+      $playPause.text("||");
+      playLoop();
+    } else {
+        stop();
+    }
   });
 
   var redrawUntil = function (targetTime) {
