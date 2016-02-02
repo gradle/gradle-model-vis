@@ -13,9 +13,7 @@ var TreeLayout = function(d3, width, height) {
 
     var diagonal = d3.svg.diagonal.radial()
         .projection(function(d) {
-            var result = [d.y, d.x / 180 * Math.PI];
-            console.log("Diagonal", d, "=", result);
-            return result;
+            return [d.y, d.x / 180 * Math.PI];
         });
 
     var canvas = svg
