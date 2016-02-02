@@ -44,8 +44,6 @@ text {
 var width = 1000,
     height = 600;
 
-var color = d3.scale.category20();
-
 var stateColors = {
   Registered: "#aec7e8",
   Discovered: "#1f77b4",
@@ -181,7 +179,13 @@ function repaint() {
       .attr("class", "node");
 
   var nodeCircle = nodeGroup.append("circle")
-      .attr("r", 8)
+      .attr("r", function (d) {
+        if (!d.name) {
+          return 10;
+        } else {
+          return 8;
+        }
+      })
       .call(force.drag);
 
   var nodeText = nodeGroup.append("text")
@@ -202,6 +206,12 @@ function repaint() {
     node
       .style("fill", function(d) {
         return stateColors[d.state];
+      })
+      .style("stroke", function (d) {
+        if (!d.name) {
+          return "black";
+        }
+        return "none";
       });
 
     node
