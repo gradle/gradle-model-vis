@@ -22,4 +22,4 @@ Try it:
 
 3. Open [http://localhost:8080/#samples/gradle-model.json](http://localhost:8080/#samples/gradle-model.json)
 
-!["./gradlew model" visualized](images/model-visualization.png)
+!["./gradlew model" visualized](images/java-compile.gif)
