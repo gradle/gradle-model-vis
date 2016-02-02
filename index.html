@@ -8,7 +8,9 @@
 
         .node {
             cursor: pointer;
-            stroke: #fff;
+        }
+
+        circle {
             stroke-width: 1.5px;
         }
 
@@ -30,6 +32,16 @@
             font-family: monospace;
             font-size: 10pt;
         }
+
+        .Registered { stroke: #aec7e8; fill: #FBFFFF; }
+        .Discovered { stroke: #1f77b4; fill: #E1FAFF; }
+        .Created { stroke: #2ca02c; fill: #C5FFC5; }
+        .DefaultsApplied { stroke: #ffbb78; fill: #FFFFC5; }
+        .Initialized { stroke: #ff7f0e; fill: #FFE574; }
+        .Mutated { stroke: #d62728; fill: #FF8D8E; }
+        .Finalized { stroke: #e377c2; fill: #FFDDFF; }
+        .SelfClosed { stroke: #B2B2B2; fill: #E1E1E1; }
+        .GraphClosed { stroke: #7f7f7f; fill: #CCCCCC; }
     </style>
 
     <script src="lib/d3.v3.js"></script>
@@ -49,43 +61,29 @@
         var width = 1000,
             height = 1000;
 
-        var stateColors = {
-            Registered: "#aec7e8",
-            Discovered: "#1f77b4",
-            Created: "#2ca02c",
-            DefaultsApplied: "#ffbb78",
-            Initialized: "#ff7f0e",
-            Mutated: "#d62728",
-            Finalized: "#e377c2",
-            SelfClosed: "#c7c7c7",
-            GraphClosed: "#7f7f7f",
-        };
-
         var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height);
 
         var legend = svg.selectAll(".legend")
-            .data(Object.keys(stateColors));
+            .data(["Registered", "Discovered", "Created", "DefaultsApplied", "Initialized", "Mutated", "Finalized", "SelfClosed", "GraphClosed"]);
 
         var legendGroup = legend.enter()
             .append("g")
             .attr("class", "legend");
 
         var legendCircle = legendGroup.append("circle")
-            .attr("r", 10)
-            .attr("cx", 10)
+            .attr("r", 6)
+            .attr("cx", 8)
             .attr("cy", function(d, idx) {
-                return 10 + idx * 22;
+                return 10 + idx * 18;
             })
-            .attr("fill", function(d) {
-                return stateColors[d];
-            });
+            .attr("class", function (d) { return d; });
 
         var legendText = legendGroup.append("text")
-            .attr("x", 22)
+            .attr("x", 20)
             .attr("y", function(d, idx) {
-                return 13 + idx * 22;
+                return 13 + idx * 18;
             })
             .text(function(d) {
                 return d;

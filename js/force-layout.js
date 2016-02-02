@@ -119,21 +119,13 @@ var ForceLayout = function(d3, width, height) {
 
         force.on("tick", function() {
             node
-                .style("fill", function(d) {
-                    return stateColors[d.state];
-                })
-                .style("stroke", function(d) {
-                    if (!d.name) {
-                        return "black";
-                    }
-                    return "none";
-                });
-
-            node
                 .attr("transform", function(d) {
                     var transform = "translate(" + d.x + "," + d.y + ")";
                     return transform;
                 });
+
+            nodeCircle
+                .attr("class", function (d) { return d.state; });
 
             link
                 .attr("x1", function(d) {

@@ -9,7 +9,7 @@ var TreeLayout = function(d3, width, height) {
 
     var tree = d3.layout.tree()
         .size([360, diameter / 2 - 120])
-        .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+        .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / (a.depth + 1); });
 
     var diagonal = d3.svg.diagonal.radial()
         .projection(function(d) {
@@ -18,7 +18,7 @@ var TreeLayout = function(d3, width, height) {
 
     var canvas = svg
         .append("g")
-        .attr("transform", "translate(" + (diameter / 2) + "," + diameter / 2 + ")");
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     var findChildIndex = function(parent, name) {
         for (var i = 0; i < parent.children.length; i++) {
@@ -101,22 +101,8 @@ var TreeLayout = function(d3, width, height) {
             .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
         nodeGroup.append("circle")
-            .attr("r", function(d) {
-                if (!d.name) {
-                    return 8;
-                } else {
-                    return 6;
-                }
-            })
-            .style("fill", function(d) {
-                return stateColors[d.state];
-            })
-            .style("stroke", function(d) {
-                if (!d.name) {
-                    return "black";
-                }
-                return "none";
-            });
+            .attr("r", 6)
+            .attr("class", function(d) { return d.state; });
 
         nodeGroup.append("text")
             .attr("dy", ".31em")
