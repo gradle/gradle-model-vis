@@ -85,20 +85,15 @@ var legendText = legendGroup.append("text")
 legend.exit().remove();
 
 
-var force = d3.layout.force()
-  .charge(-120)
-  .linkDistance(80)
-  .size([width, height]);
-var nodes = force.nodes(),
-    links = force.links();
-
 var dataFile = location.hash ? location.hash.substring(1) : "samples/gradle-model.json";
 console.log("Loading data file", dataFile);
 
 d3.json(dataFile, function(error, events) {
   if (error) throw error;
 
-  var commands = processEvents(events);
+  var layout = new Layout(width, height);
+
+  var commands = processEvents(events, layout);
   var time = 0;
 
   $("#time").attr({min: 0, max: events.length}).val(0);
@@ -153,7 +148,7 @@ d3.json(dataFile, function(error, events) {
         commands[time].backward();
       }
     }
-    repaint();
+    layout.repaint();
   }
 
   $("#time").on("input", function () {
@@ -163,158 +158,7 @@ d3.json(dataFile, function(error, events) {
   // redrawUntil(events.length / 2);
 });
 
-function repaint() {
-  var link = svg.selectAll(".link")
-      .data(links);
-
-  link.enter().append("line")
-      .attr("class", "link")
-      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
-  link.exit().remove();
-
-  var node = svg.selectAll(".node")
-    .data(nodes);
-
-  var nodeGroup = node.enter()
-      .append("g")
-      .attr("class", "node");
-
-  var nodeCircle = nodeGroup.append("circle")
-      .attr("r", function (d) {
-        if (!d.name) {
-          return 10;
-        } else {
-          return 8;
-        }
-      })
-      .call(force.drag);
-
-  var nodeText = nodeGroup.append("text")
-      .text(function(d) {
-        var name = d.name;
-        var idx = name.lastIndexOf(".");
-        if (idx !== -1) {
-          name = name.substring(idx + 1);
-        }
-        return name ? name : "<ROOT>";
-      })
-      .attr("x", "9")
-      .attr("y", "3")
-      .style("fill", "#000000");
-  node.exit().remove();
-
-  force.on("tick", function () {
-    node
-      .style("fill", function(d) {
-        return stateColors[d.state];
-      })
-      .style("stroke", function (d) {
-        if (!d.name) {
-          return "black";
-        }
-        return "none";
-      });
-
-    node
-      .attr("transform", function (d) {
-        var transform = "translate(" + d.x + "," + d.y + ")";
-        return transform;
-      });
-    // nodeCircle
-    //     .attr("cx", function(d) { return d.x; })
-    //     .attr("cy", function(d) { return d.y; });
-    // nodeText
-    //     .attr("x", function(d) { return d.x; })
-    //     .attr("y", function(d) { return d.y; });
-
-    link
-      .attr("x1", function (d) {
-          return d.source.x;
-      })
-      .attr("y1", function (d) {
-          return d.source.y;
-      })
-      .attr("x2", function (d) {
-          return d.target.x;
-      })
-      .attr("y2", function (d) {
-          return d.target.y;
-      });
-  });
-
-  // Restart the force layout.
-  force
-      // .charge(-120)
-      // .linkDistance(80)
-      // .size([width, height])
-      .start();
-}
-
-var Layout = function (nodes, links) {
-  var findNodeIndex = function (path) {
-      for (var i = 0; i < nodes.length; i++) {
-          if (nodes[i].name == path) {
-              return i;
-          }
-      };
-  };
-
-  // Add and remove elements on the graph object
-  this.addNode = function (path) {
-      nodes.push({
-        "name": path,
-        "state": "Registered"
-      });
-  };
-
-  this.removeNode = function (path) {
-    var i = 0;
-    var nodeIndex = findNodeIndex(path);
-    var node = nodes[nodeIndex];
-    while (i < links.length) {
-      var link = links[i];
-      if (link.source == node || link.target == node) {
-        links.splice(i, 1);
-      }
-      else {
-        i++;
-      }
-    }
-    nodes.splice(nodeIndex, 1);
-  };
-
-  this.addLink = function (source, target, value) {
-    var sourceIdx = findNodeIndex(source);
-    var sourceNode = nodes[sourceIdx];
-    if (!sourceNode) {
-      throw "No source node for " + source;
-    }
-    var targetIdx = findNodeIndex(target);
-    var targetNode = nodes[targetIdx];
-    if (!targetNode) {
-      throw "No target node for " + target;
-    }
-    links.push({"source": sourceNode, "target": targetNode, "value": value});
-  };
-
-  this.removeLink = function (source, target) {
-      for (var i = 0; i < links.length; i++) {
-          if (links[i].source.id == source && links[i].target.id == target) {
-              links.splice(i, 1);
-              break;
-          }
-      }
-  };
-
-  this.setState = function (path, state) {
-    var node = nodes[findNodeIndex(path)];
-    node.state = state;
-  };
-};
-
-var layout = new Layout(nodes, links);
-
-function processEvents(events) {
+function processEvents(events, layout) {
   var existingNodes = {};
   var commands = [];
   events.forEach(function (event) {
@@ -337,12 +181,14 @@ function processEvents(events) {
       commands.push({
         forward: function () {
           console.log("++ " + event.path);
-          layout.addNode(event.path);
+          var parentPath;
           if (event.path) {
             var idx = event.path.lastIndexOf('.');
-            var parentPath = idx === -1 ? "" : event.path.substring(0, idx);
-            layout.addLink(event.path, parentPath, 1);
+            parentPath = idx === -1 ? "" : event.path.substring(0, idx);
+          } else {
+            parentPath = null;
           }
+          layout.addNode(event.path, parentPath);
         },
         backward: function () {
           console.log("-- " + event.path);
@@ -357,5 +203,164 @@ function processEvents(events) {
   });
   return commands;
 }
+
+var Layout = function (width, height) {
+  var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(80)
+    .size([width, height]);
+  var nodes = force.nodes(),
+      links = force.links();
+
+  var findNodeIndex = function (path) {
+      for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].name == path) {
+              return i;
+          }
+      };
+  };
+
+  var addLink = function (source, target, value) {
+    var sourceIdx = findNodeIndex(source);
+    var sourceNode = nodes[sourceIdx];
+    if (!sourceNode) {
+      throw "No source node for " + source;
+    }
+    var targetIdx = findNodeIndex(target);
+    var targetNode = nodes[targetIdx];
+    if (!targetNode) {
+      throw "No target node for " + target;
+    }
+    links.push({"source": sourceNode, "target": targetNode, "value": value});
+  };
+
+  var removeLink = function (source, target) {
+      for (var i = 0; i < links.length; i++) {
+          if (links[i].source.id == source && links[i].target.id == target) {
+              links.splice(i, 1);
+              break;
+          }
+      }
+  };
+
+  // Add and remove elements on the graph object
+  this.addNode = function (path, parentPath) {
+      nodes.push({
+        "name": path,
+        "state": "Registered"
+      });
+      if (parentPath !== null) {
+        addLink(path, parentPath, 1);
+      }
+  };
+
+  this.removeNode = function (path) {
+    var i = 0;
+    var nodeIndex = findNodeIndex(path);
+    var node = nodes[nodeIndex];
+    while (i < links.length) {
+      var link = links[i];
+      if (link.source == node || link.target == node) {
+        links.splice(i, 1);
+      }
+      else {
+        i++;
+      }
+    }
+    nodes.splice(nodeIndex, 1);
+  };
+
+  this.setState = function (path, state) {
+    var node = nodes[findNodeIndex(path)];
+    node.state = state;
+  };
+
+  this.repaint = function () {
+    var link = svg.selectAll(".link")
+        .data(links);
+
+    link.enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+    link.exit().remove();
+
+    var node = svg.selectAll(".node")
+      .data(nodes);
+
+    var nodeGroup = node.enter()
+        .append("g")
+        .attr("class", "node");
+
+    var nodeCircle = nodeGroup.append("circle")
+        .attr("r", function (d) {
+          if (!d.name) {
+            return 10;
+          } else {
+            return 8;
+          }
+        })
+        .call(force.drag);
+
+    var nodeText = nodeGroup.append("text")
+        .text(function(d) {
+          var name = d.name;
+          var idx = name.lastIndexOf(".");
+          if (idx !== -1) {
+            name = name.substring(idx + 1);
+          }
+          return name ? name : "<ROOT>";
+        })
+        .attr("x", "9")
+        .attr("y", "3")
+        .style("fill", "#000000");
+    node.exit().remove();
+
+    force.on("tick", function () {
+      node
+        .style("fill", function(d) {
+          return stateColors[d.state];
+        })
+        .style("stroke", function (d) {
+          if (!d.name) {
+            return "black";
+          }
+          return "none";
+        });
+
+      node
+        .attr("transform", function (d) {
+          var transform = "translate(" + d.x + "," + d.y + ")";
+          return transform;
+        });
+      // nodeCircle
+      //     .attr("cx", function(d) { return d.x; })
+      //     .attr("cy", function(d) { return d.y; });
+      // nodeText
+      //     .attr("x", function(d) { return d.x; })
+      //     .attr("y", function(d) { return d.y; });
+
+      link
+        .attr("x1", function (d) {
+            return d.source.x;
+        })
+        .attr("y1", function (d) {
+            return d.source.y;
+        })
+        .attr("x2", function (d) {
+            return d.target.x;
+        })
+        .attr("y2", function (d) {
+            return d.target.y;
+        });
+    });
+
+    // Restart the force layout.
+    force
+        // .charge(-120)
+        // .linkDistance(80)
+        // .size([width, height])
+        .start();
+  };
+};
 
 </script>
