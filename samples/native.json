@@ -2,12 +2,6 @@
     {
         "path": "",
         "project": ":",
-        "state": "Created",
-        "type": "state-changed"
-    },
-    {
-        "path": "",
-        "project": ":",
         "state": "Discovered",
         "type": "state-changed"
     },
