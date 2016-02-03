@@ -42,6 +42,10 @@ var ForceLayout = function(d3, width, height) {
         }
     };
 
+    this.hasNode = function (path) {
+        return findNodeIndex(path) !== -1;
+    }
+
     // Add and remove elements on the graph object
     this.addNode = function(path, parentPath) {
         nodes.push({

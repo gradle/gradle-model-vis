@@ -43,18 +43,32 @@ var TreeLayout = function(d3, width, height) {
         };
         return -1;
     };
-    var findNode = function (path) {
+    var findNodeInternal = function (path) {
         var node = root;
         if (path !== "") {
             var parts = path.split(/\./);
             while (parts.length > 0) {
                 var name = parts.shift();
                 var childIndex = findChildIndex(node, name);
+                if (childIndex === -1) {
+                    return null;
+                }
                 node = node.children[childIndex];
             }
         }
         return node;
     };
+    var findNode = function (path) {
+        var node = findNodeInternal(path);
+        if (node === null) {
+            throw "Cannot find node " + path;
+        }
+        return node;
+    };
+
+    this.hasNode = function (path) {
+        return findNodeInternal(path) !== null;
+    }
 
     // Add and remove elements on the graph object
     this.addNode = function(path) {
