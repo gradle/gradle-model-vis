@@ -56,6 +56,7 @@ var TreeLayout = function(d3, width, height) {
             state: "Registered",
             children: []
         });
+        parent.children.sort(function (a, b) { return a.name.localeCompare(b.name); });
     };
 
     this.removeNode = function(path) {
