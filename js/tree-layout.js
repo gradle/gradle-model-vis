@@ -82,7 +82,7 @@ var TreeLayout = function(d3, width, height) {
         var svg = canvas;
         svg.selectAll('.node').remove();
         svg.selectAll('.link').remove();
-        var nodes = tree.nodes(JSON.parse(JSON.stringify(root)));
+        var nodes = tree.nodes(root);
         var links = tree.links(nodes);
 
         var link = svg.selectAll(".link")
