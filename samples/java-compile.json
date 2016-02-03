@@ -1,232 +1,278 @@
 [
     {
         "path": "",
-        "type": "state-changed",
-        "state": "Created"
+        "project": ":",
+        "state": "Created",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "Created"
+        "project": ":",
+        "state": "Created",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
+        "project": ":",
+        "state": "DefaultsApplied",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "Initialized"
+        "project": ":",
+        "state": "Initialized",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "Mutated"
+        "project": ":",
+        "state": "Mutated",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "Finalized"
+        "project": ":",
+        "state": "Finalized",
+        "type": "state-changed"
     },
     {
         "path": "tasks",
-        "type": "state-changed",
-        "state": "SelfClosed"
+        "project": ":",
+        "state": "SelfClosed",
+        "type": "state-changed"
     },
     {
         "path": "tasks.buildEnvironment",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.components",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.dependencies",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.dependencyInsight",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.help",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.init",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.model",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.projects",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.properties",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.tasks",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.wrapper",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "Created"
+        "project": ":",
+        "state": "Created",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
+        "project": ":",
+        "state": "DefaultsApplied",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "Created"
+        "project": ":",
+        "state": "Created",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "DefaultsApplied"
+        "project": ":",
+        "state": "DefaultsApplied",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "Initialized"
+        "project": ":",
+        "state": "Initialized",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "Mutated"
+        "project": ":",
+        "state": "Mutated",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "Finalized"
+        "project": ":",
+        "state": "Finalized",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "SelfClosed"
+        "project": ":",
+        "state": "SelfClosed",
+        "type": "state-changed"
     },
     {
         "path": "tasks.compileStuff",
-        "type": "state-changed",
-        "state": "GraphClosed"
+        "project": ":",
+        "state": "GraphClosed",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "Initialized"
+        "project": ":",
+        "state": "Initialized",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "Mutated"
+        "project": ":",
+        "state": "Mutated",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "Finalized"
+        "project": ":",
+        "state": "Finalized",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "SelfClosed"
+        "project": ":",
+        "state": "SelfClosed",
+        "type": "state-changed"
     },
     {
         "path": "tasks.run",
-        "type": "state-changed",
-        "state": "GraphClosed"
+        "project": ":",
+        "state": "GraphClosed",
+        "type": "state-changed"
     },
     {
         "path": "buildDir",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "extensionContainer",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "fileOperations",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "nodeInitializerRegistry",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "projectIdentifier",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "proxyFactory",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "schemaStore",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "serviceRegistry",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "structBindingsStore",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "taskFactory",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     },
     {
         "path": "typeConverter",
-        "type": "state-changed",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-changed"
     }
 ]

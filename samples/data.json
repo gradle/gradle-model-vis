@@ -1,32 +1,38 @@
 [
     {
         "path": "",
-        "type": "state-change",
-        "state": "Registered"
+        "project": ":",
+        "state": "Registered",
+        "type": "state-change"
     },
     {
         "path": "components",
-        "type": "state-change",
-        "state": "Registered"
+        "project": ":",
+        "state": "Registered",
+        "type": "state-change"
     },
     {
         "path": "components.main",
-        "type": "state-change",
-        "state": "Registered"
+        "project": ":",
+        "state": "Registered",
+        "type": "state-change"
     },
     {
         "path": "components.main.binaries",
-        "type": "state-change",
-        "state": "Registered"
+        "project": ":",
+        "state": "Registered",
+        "type": "state-change"
     },
     {
         "path": "components.main.binaries.jar",
-        "type": "state-change",
-        "state": "Registered"
+        "project": ":",
+        "state": "Registered",
+        "type": "state-change"
     },
     {
         "path": "components.main.binaries.jar",
-        "type": "state-change",
-        "state": "Discovered"
+        "project": ":",
+        "state": "Discovered",
+        "type": "state-change"
     }
 ]
