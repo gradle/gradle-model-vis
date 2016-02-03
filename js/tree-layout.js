@@ -1,9 +1,21 @@
 var TreeLayout = function(d3, width, height) {
-    var root = {
-        name: "",
-        state: "Registered",
-        children: []
-    };
+    var createNode = function (name, parentPath) {
+        var children = [];
+        var node = {
+            name: name,
+            parent: parentPath,
+            state: "Registered",
+            children: children,
+            addChild: function (childName) {
+                var path = parentPath ? parentPath + "." + name : name;
+                children.push(createNode(childName, path));
+                children.sort(function (a, b) { return a.name.localeCompare(b.name); });
+            }
+        };
+        return node;
+    }
+
+    var root = createNode("", null);
 
     var diameter = Math.min(width, height);
 
@@ -21,6 +33,9 @@ var TreeLayout = function(d3, width, height) {
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     var findChildIndex = function(parent, name) {
+        if (!parent.children) {
+            return -1;
+        }
         for (var i = 0; i < parent.children.length; i++) {
             if (parent.children[i].name == name) {
                 return i;
@@ -50,13 +65,7 @@ var TreeLayout = function(d3, width, height) {
         var parentPath = idx === -1 ? "" : path.substring(0, idx);
         var name = idx === -1 ? path : path.substring(idx + 1);
         var parent = findNode(parentPath);
-        parent.children.push({
-            name: name,
-            parent: parentPath,
-            state: "Registered",
-            children: []
-        });
-        parent.children.sort(function (a, b) { return a.name.localeCompare(b.name); });
+        parent.addChild(name);
     };
 
     this.removeNode = function(path) {
