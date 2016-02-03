@@ -10,6 +10,7 @@ var TreeLayout = function(d3, width, height) {
                 var path = parentPath ? parentPath + "." + name : name;
                 children.push(createNode(childName, path));
                 children.sort(function (a, b) { return a.name.localeCompare(b.name); });
+                node.children = children;
             }
         };
         return node;
