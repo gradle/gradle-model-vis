@@ -58,7 +58,7 @@
         <button id="play-pause">&gt;&gt;</button>
     </div>
     <script>
-        var width = 1000,
+        var width = 1600,
             height = 1000;
 
         var svg = d3.select("body").append("svg")
@@ -167,7 +167,19 @@
         function processEvents(events, layout) {
             var existingNodes = {};
             var commands = [];
-            events.forEach(function(event) {
+            var multiproject = _.size(_.groupBy(events, function (e) { return e.project; }))>1;
+            var normalizeEvent = function(event) {
+                if (!multiproject) {
+                    return;
+                }
+                if (event.project != '') {
+                   var path = '<ROOT '+event.project+'>';
+                   if (event.path != '') { path += '.' + event.path; }
+                   event.path = path;
+                }
+            }
+            var processEvent = function(event) {
+                normalizeEvent(event);
                 var existingNode = existingNodes[event.path];
                 if (existingNode) {
                     var nextState = event.state;
@@ -199,7 +211,16 @@
                         state: event.state
                     };
                 }
-            });
+            };
+            if (multiproject) {
+		    processEvent({ "project": '', "path": '', state: 'Registered'});
+		    events.forEach(function (event) {
+		        if (!existingNodes['<ROOT '+event.project+'>']) {
+		              processEvent({ project:'', state: 'Registered', path: '<ROOT '+event.project+'>' });
+		        }
+		    });
+            }
+            events.forEach(processEvent);
             return commands;
         }
     </script>
