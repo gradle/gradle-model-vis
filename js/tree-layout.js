@@ -5,7 +5,6 @@ var TreeLayout = function(d3, width, height) {
             name: name,
             parent: parentPath,
             state: "Registered",
-            children: children,
             addChild: function (childName) {
                 var path = parentPath ? parentPath + "." + name : name;
                 children.push(createNode(childName, path));
