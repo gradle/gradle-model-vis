@@ -67,9 +67,8 @@
         $scope.playing = false;
         $scope.stepTime = function (delta) {
             var time = parseInt($scope.time) + delta;
-            if (time >= 0 && time < $scope.commands.length) {
+            if (time >= 0 && time <= $scope.commands.length) {
                 $scope.time = time;
-                $scope.$digest();
             }
         };
         dataLoader(dataFile).then(function (events) {
