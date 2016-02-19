@@ -1,0 +1,1594 @@
+[
+    {
+        "project": ":",
+        "path": "",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "tasks",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "tasks",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "extensionContainer",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "fileOperations",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "tasks.help",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.projects",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.tasks",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.properties",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.dependencyInsight",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.dependencies",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.buildEnvironment",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.components",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.model",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.init",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.wrapper",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.clean",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.assemble",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.check",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "tasks.build",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "binaries",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "javaInstallationProbe",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "javaInstallations",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChains",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "tasks",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "tasks",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "binaries",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "extensionContainer",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "fileOperations",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "javaInstallationProbe",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "serviceRegistry",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "schemaStore",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "structBindingsStore",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "languageSourceSetFactory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "taskFactory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "binarySpecFactory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "projectIdentifier",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "componentSpecFactory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "nodeInitializerRegistry",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "binaries",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "binaries",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "binaries",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "proxyFactory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "typeConverter",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "sources",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "languageTransforms",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "platforms",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "platformResolver",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.jar",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.sources",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.pegasusClientComponentSpec",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "true"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.sources",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.tasks",
+        "type": "state-changed",
+        "state": "Registered",
+        "hidden": "false"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "buildDir",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "projectLayout",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "javaToolChain",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.sources",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.sources",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.sources",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.sources",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Created"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "DefaultsApplied"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Initialized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Mutated"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "Finalized"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "SelfClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.generatedDirectory",
+        "type": "state-changed",
+        "state": "GraphClosed"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.pegasusClientComponentSpec",
+        "type": "state-changed",
+        "state": "Discovered"
+    },
+    {
+        "project": ":",
+        "path": "components.comp.binaries.bin.pegasusClientComponentSpec",
+        "type": "state-changed",
+        "state": "Created"
+    }
+]
