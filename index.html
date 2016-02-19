@@ -33,6 +33,18 @@
             font-size: 10pt;
         }
 
+        #content {
+            position: absolute;
+        }
+
+        #legend {
+            position: absolute;;
+            top: 0;
+            left: 0;
+            width: 140px;
+            height: 180px;
+        }
+
         .Registered { stroke: #aec7e8; fill: #FBFFFF; }
         .Discovered { stroke: #1f77b4; fill: #E1FAFF; }
         .Created { stroke: #2ca02c; fill: #C5FFC5; }
@@ -58,14 +70,24 @@
         <button id="play-pause">&gt;&gt;</button>
     </div>
     <script>
-        var width = 1600,
+        var width = 1200,
             height = 1000;
 
-        var svg = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+        var content = d3.select("body").append("div").attr("id", "content");
 
-        var legend = svg.selectAll(".legend")
+        var svg = content.append("svg")
+            .attr("id", "canvas")
+            .attr("width", width)
+            .attr("height", height)
+            .call(d3.behavior.zoom().on("zoom", function () {
+                svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+            }))
+            .append("g");
+
+        var legendBox = content.append("svg")
+            .attr("id", "legend");
+
+        var legend = legendBox.selectAll(".legend")
             .data(["Registered", "Discovered", "Created", "DefaultsApplied", "Initialized", "Mutated", "Finalized", "SelfClosed", "GraphClosed"]);
 
         var legendGroup = legend.enter()
