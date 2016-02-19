@@ -17,10 +17,7 @@ var TreeLayout = function(d3, width, height) {
 
     var root = createNode("", null);
 
-    var diameter = Math.min(width, height);
-
     var tree = d3.layout.tree()
-        .size([360, diameter / 2 - 120])
         .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / (a.depth + 1); });
 
     var diagonal = d3.svg.diagonal.radial()
@@ -101,7 +98,19 @@ var TreeLayout = function(d3, width, height) {
         node.state = state;
     };
 
+    var getMaxDepth = function (node, currentDepth) {
+        var depth = currentDepth;
+        if (node.children) {
+            node.children.forEach(function (child) {
+                depth = Math.max(depth, getMaxDepth(child, currentDepth + 1))
+            });
+        }
+        return depth;
+    }
+
     this.repaint = function () {
+        var maxDepth = getMaxDepth(root, 0);
+        tree.size([360, maxDepth * 100]);
         var svg = canvas;
         svg.selectAll('.node').remove();
         svg.selectAll('.link').remove();
