@@ -1,4 +1,4 @@
-var ForceLayout = function(d3, width, height) {
+var ForceLayout = function(svg, d3, width, height) {
     var force = d3.layout.force()
         .charge(-120)
         .linkDistance(80)

@@ -1,4 +1,4 @@
-var TreeLayout = function(d3, width, height) {
+var TreeLayout = function(svg, d3, width, height) {
     var createNode = function (name, parentPath) {
         var children = [];
         var node = {
