@@ -2,6 +2,8 @@
 <html ng-app="vis">
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <script src="lib/d3.v3.js"></script>
@@ -10,12 +12,25 @@
     <script src="lib/angular-1.5.0.min.js"></script>
 </head>
 <body>
-    <div class="controls" ng-controller="TimeController">
-        <button ng-click="stepTime(-1)">–</button>
-        <input type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
-        <button ng-click="stepTime(1)">+</button>
-        <button ng-click="playing = !playing">{{playing ? '||' : '&gt;&gt;'}}</button>
-        <span>{{time}}</span> / <span>{{commands.length}}</span>
+    <div class="controls input-group" ng-controller="TimeController">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="stepTime(-1)">
+                <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+        </span>
+        <input class="form-control" type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="stepTime(1)">
+                <span class="glyphicon glyphicon-step-forward"></span>
+            </button>
+            <button class="btn btn-default" ng-click="playing = !playing">
+                <span ng-if="playing" class="glyphicon glyphicon-pause"></span>
+                <span ng-if="!playing" class="glyphicon glyphicon-play"></span>
+            </button>
+        </span>
+        <span class="step">
+            <span>{{time}}</span> / <span>{{commands.length}}</span>
+        </span>
     </div>
 
     <script src="js/force-layout.js"></script>
