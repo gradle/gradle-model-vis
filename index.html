@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="vis">
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
     <script src="lib/d3.v3.js"></script>
     <script src="lib/sugar-1.4.1.min.js"></script>
     <script src="lib/jquery-2.2.0.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="lib/angular-1.5.0.min.js"></script>
+</head>
+<body>
+    <div class="controls" ng-controller="TimeController">
+        <button ng-click="stepTime(-1)">–</button>
+        <input type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
+        <button ng-click="stepTime(1)">+</button>
+        <button ng-click="playing = !playing">{{playing ? '||' : '&gt;&gt;'}}</button>
+        <span>{{time}}</span> / <span>{{commands.length}}</span>
+    </div>
+
     <script src="js/force-layout.js"></script>
     <script src="js/tree-layout.js"></script>
-</head>
-<body onload="init();">
-    <div class="controls">
-        <button id="back">–</button>
-        <input id="time" type="range" width="100" />
-        <button id="forward">+</button>
-        <button id="play-pause">&gt;&gt;</button>
-    </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
