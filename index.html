@@ -2,59 +2,7 @@
 <html>
 <meta charset="utf-8">
 <head>
-    <style>
-        svg {
-        }
-
-        .node {
-            cursor: pointer;
-        }
-
-        circle {
-            stroke-width: 1.5px;
-        }
-
-        .link {
-            stroke: #999;
-            stroke-opacity: .6;
-            fill: none;
-        }
-
-        text {
-            font-size: 10px;
-            font-family: sans-serif;
-            stroke: none;
-            fill: black;
-        }
-
-        .controls,
-        .controls button {
-            font-family: monospace;
-            font-size: 10pt;
-        }
-
-        #content {
-            position: absolute;
-        }
-
-        #legend {
-            position: absolute;;
-            top: 0;
-            left: 0;
-            width: 140px;
-            height: 180px;
-        }
-
-        .Registered { stroke: #aec7e8; fill: #FBFFFF; }
-        .Discovered { stroke: #1f77b4; fill: #E1FAFF; }
-        .Created { stroke: #2ca02c; fill: #C5FFC5; }
-        .DefaultsApplied { stroke: #ffbb78; fill: #FFFFC5; }
-        .Initialized { stroke: #ff7f0e; fill: #FFE574; }
-        .Mutated { stroke: #d62728; fill: #FF8D8E; }
-        .Finalized { stroke: #e377c2; fill: #FFDDFF; }
-        .SelfClosed { stroke: #B2B2B2; fill: #E1E1E1; }
-        .GraphClosed { stroke: #7f7f7f; fill: #CCCCCC; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <script src="lib/d3.v3.js"></script>
     <script src="lib/underscore.js"></script>
