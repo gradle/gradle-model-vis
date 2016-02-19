@@ -119,7 +119,7 @@ var init = function() {
 var processEvents = function (events, layout) {
     var existingNodes = {};
     var commands = [];
-    var multiproject = _.size(_.groupBy(events, function (e) { return e.project; }))>1;
+    var multiproject = Object.size(events.groupBy(function (e) { return e.project; })) > 1;
     var normalizeEvent = function(event) {
         if (!multiproject) {
             return;
