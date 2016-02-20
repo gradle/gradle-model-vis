@@ -6,6 +6,10 @@
     width: 140px;
 }
 
+.description {
+    width: 600px;
+}
+
 .node {
     cursor: pointer;
 }

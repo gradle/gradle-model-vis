@@ -130,6 +130,7 @@
                 var nextState = event.state;
                 var previousState = existingNode.state;
                 commands.push({
+                    description: event.path + ": " + previousState + " -> " + nextState,
                     forward: function() {
                         console.log("-> " + event.path + ": " + previousState + " -> " + nextState);
                         layout.setState(event.path, nextState);
@@ -142,6 +143,7 @@
                 existingNode.state = event.state;
             } else {
                 commands.push({
+                    description: event.path + ": Registered",
                     forward: function() {
                         console.log("++ " + event.path);
                         layout.addNode(event.path);
