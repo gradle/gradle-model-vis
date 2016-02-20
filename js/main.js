@@ -61,7 +61,7 @@
         };
     });
 
-    app.controller("TimeController", function($scope, $timeout, dataLoader, LayoutFactory) {
+    app.controller("MainController", function($scope, $timeout, dataLoader, LayoutFactory) {
         $scope.time = 0;
         $scope.commands = [];
         $scope.playing = false;

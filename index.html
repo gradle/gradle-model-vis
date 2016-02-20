@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <script src="lib/d3.v3.js"></script>
@@ -11,15 +10,17 @@
     <script src="lib/jquery-2.2.0.min.js"></script>
     <script src="lib/angular-1.5.0.min.js"></script>
 </head>
-<body>
-    <div class="controls input-group" ng-controller="TimeController">
-        <span class="input-group-btn">
+<body ng-controller="MainController">
+    <div class="controls input-group" style="float: left;">
+        <div class="input-group-btn">
             <button class="btn btn-default" ng-click="stepTime(-1)">
                 <span class="glyphicon glyphicon-step-backward"></span>
             </button>
-        </span>
-        <input class="form-control" type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
-        <span class="input-group-btn">
+        </div>
+        <div class="form-control">
+            <input type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
+        </div>
+        <div class="input-group-btn">
             <button class="btn btn-default" ng-click="stepTime(1)">
                 <span class="glyphicon glyphicon-step-forward"></span>
             </button>
@@ -27,10 +28,11 @@
                 <span ng-if="playing" class="glyphicon glyphicon-pause"></span>
                 <span ng-if="!playing" class="glyphicon glyphicon-play"></span>
             </button>
-        </span>
-        <span class="step">
-            <span>{{time}}</span> / <span>{{commands.length}}</span>
-        </span>
+        </div>
+    </div>
+    <div class="step input-group">
+        <input class="form-control" ng-model="time" ng-enabled="commands.length" />
+        <span class="input-group-addon">of {{commands.length}}</span>
     </div>
 
     <script src="js/force-layout.js"></script>
