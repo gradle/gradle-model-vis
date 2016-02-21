@@ -18,7 +18,7 @@
             </button>
         </div>
         <div class="form-control">
-            <input type="range" min="0" max="{{commands.length}}" ng-model="time" ng-enabled="commands.length" />
+            <input type="range" min="0" max="{{steps.length}}" ng-model="time" ng-enabled="steps.length" />
         </div>
         <div class="input-group-btn">
             <button class="btn btn-default" ng-click="stepTime(1)">
@@ -31,12 +31,12 @@
         </div>
     </div>
     <div class="step input-group" style="float: left;">
-        <input class="form-control" ng-model="time" ng-enabled="commands.length" />
-        <span class="input-group-addon">of {{commands.length}}</span>
+        <input class="form-control" ng-model="time" ng-enabled="steps.length" />
+        <span class="input-group-addon">of {{steps.length}}</span>
     </div>
     <div class="description input-group">
         <span class="input-group-addon">Last:</span>
-        <input class="form-control" ng-model="commands[time - 1].description" ng-disabled="true" />
+        <input class="form-control" ng-model="steps[time - 1].description" readonly="true" />
     </div>
 
     <div class="content">
@@ -50,7 +50,7 @@
                         </svg>
                     </td>
                     <td class="count">
-                        <span>{{stateCounts[state]}}</span>
+                        <span>{{steps[time - 1].stateCounts[state] || 0}}</span>
                     </td>
                     <td>
                         <span>{{state}}</span>
@@ -59,7 +59,7 @@
                 <tr class="sumRow">
                     <td></td>
                     <td class="count">
-                        <span>{{count()}}</span>
+                        <span>{{count(time - 1)}}</span>
                     </td>
                     <td>
                         <span>Sum</span>
