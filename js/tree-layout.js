@@ -31,17 +31,21 @@
 
             var cloneMatching = function (filter, node) {
                 var children;
+                var hasHiddenChildren;
                 if (node.children) {
                     children = node.children.filter(filter).map(cloneMatching.bind(this, filter));
+                    hasHiddenChildren = children.length !== node.children.length;
                 } else {
                     children = [];
+                    hasHiddenChildren = false;
                 }
                 return {
                     name: node.name,
                     path: node.path,
                     parent: node.parent,
                     state: node.state,
-                    children: children
+                    children: children,
+                    hasHiddenChildren: hasHiddenChildren
                 };
             }
 
@@ -205,7 +209,7 @@
                         if (!name) {
                             name = "ROOT";
                         }
-                        if (collapsed[d.path]) {
+                        if (collapsed[d.path] && d.hasHiddenChildren) {
                             name = name + " [+]";
                         }
                         return name;
