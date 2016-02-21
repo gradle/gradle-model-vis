@@ -3,15 +3,16 @@
 
     module.factory("LayoutFactory", function () {
         return function (svg, d3, width, height) {
-        var createNode = function (name, parentPath) {
+            var createNode = function (name, parentPath, hidden) {
                 var children = [];
                 var node = {
                     name: name,
                     parent: parentPath,
+                    hidden: hidden,
                     state: "Registered",
-                    addChild: function (childName) {
+                    addChild: function (childName, hidden) {
                         var path = parentPath ? parentPath + "." + name : name;
-                        children.push(createNode(childName, path));
+                        children.push(createNode(childName, path, hidden));
                         children.sort(function (a, b) { return a.name.localeCompare(b.name); });
                         node.children = children;
                     }
@@ -19,7 +20,24 @@
                 return node;
             }
 
-            var root = createNode("", null);
+            var cloneNonHiddenNode = function (node) {
+                var children;
+                if (node.children) {
+                    children = node.children
+                    .filter(function (child) { return !child.hidden; })
+                    .map(cloneNonHiddenNode);
+                } else {
+                    children = [];
+                }
+                return {
+                    name: node.name,
+                    parent: node.parent,
+                    state: node.state,
+                    children: children
+                };
+            }
+
+            var root = createNode("", null, false);
 
             var tree = d3.layout.tree()
                 .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / (a.depth + 1); });
@@ -72,7 +90,7 @@
             }
 
             // Add and remove elements on the graph object
-            this.addNode = function(path) {
+            this.addNode = function(path, hidden) {
                 if (!path) {
                     return;
                 }
@@ -80,7 +98,7 @@
                 var parentPath = idx === -1 ? "" : path.substring(0, idx);
                 var name = idx === -1 ? path : path.substring(idx + 1);
                 var parent = findNode(parentPath);
-                parent.addChild(name);
+                parent.addChild(name, hidden);
             };
 
             this.removeNode = function(path) {
@@ -112,13 +130,21 @@
                 return depth;
             }
 
-            this.repaint = function () {
-                var maxDepth = getMaxDepth(root, 0);
+            this.repaint = function (showHidden) {
+                var displayRoot;
+                if (showHidden) {
+                    displayRoot = root;
+                } else {
+                    displayRoot = cloneNonHiddenNode(root);
+                }
+
+                var maxDepth = getMaxDepth(displayRoot, 0);
                 tree.size([360, maxDepth * 100]);
                 var svg = canvas;
                 svg.selectAll('.node').remove();
                 svg.selectAll('.link').remove();
-                var nodes = tree.nodes(root);
+
+                var nodes = tree.nodes(displayRoot);
                 var links = tree.links(nodes);
 
                 var link = svg.selectAll(".link")

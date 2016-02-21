@@ -34,9 +34,15 @@
         <input class="form-control" ng-model="time" ng-enabled="steps.length" />
         <span class="input-group-addon">of {{steps.length}}</span>
     </div>
-    <div class="description input-group">
+    <div class="description input-group" style="float: left;">
         <span class="input-group-addon">Last:</span>
         <input class="form-control" ng-model="steps[time - 1].description" readonly="true" />
+    </div>
+    <div class="input-group">
+        <label class="form-control">Show hidden</label>
+        <span class="input-group-addon">
+            <input type="checkbox" ng-model="showHidden" />
+        </span>
     </div>
 
     <div class="content">

@@ -26,11 +26,24 @@
         $scope.time = 0;
         $scope.steps = [];
         $scope.playing = false;
+        $scope.showHidden = true;
         $scope.stepTime = function (delta) {
-            var time = parseInt($scope.time) + delta;
-            if (time >= 0 && time <= $scope.steps.length) {
-                $scope.time = time;
+            var time = parseInt($scope.time);
+            while (true) {
+                time += delta;
+                if (time < 0) {
+                    time = 0;
+                    break;
+                }
+                if (time > $scope.steps.length) {
+                    time = $scope.steps.length;
+                    break;
+                }
+                if ($scope.showHidden || time === 0 || !$scope.steps[time - 1].hidden) {
+                    break;
+                }
             }
+            $scope.time = time;
         };
         $scope.states = ["Registered", "Discovered", "Created", "DefaultsApplied", "Initialized", "Mutated", "Finalized", "SelfClosed", "GraphClosed"];
         $scope.count = function(time) {
@@ -61,7 +74,7 @@
                 if (playing) {
                     var playLoop = function() {
                         if ($scope.playing && $scope.time < $scope.steps.length - 1) {
-                            $scope.time++;
+                            $scope.stepTime(1);
                             $timeout(playLoop, 200);
                         } else {
                             $scope.playing = false;
@@ -71,6 +84,13 @@
                     $timeout(playLoop, 0);
                 }
             });
+            $scope.$watch("showHidden", function () {
+                repaint();
+            });
+
+            var repaint = function () {
+                layout.repaint($scope.showHidden);
+            };
 
             var redrawUntil = function(targetTime, time) {
                 if (time < targetTime) {
@@ -84,7 +104,7 @@
                         $scope.steps[time].command.backward();
                     }
                 }
-                layout.repaint();
+                repaint();
             }
         });
     });
@@ -106,47 +126,56 @@
         var processEvent = function(event, previousStateCounts) {
             var path = normalizePath(event.project, event.path);
             var stateCounts = Object.clone(previousStateCounts);
-            var previousState = existingNodes[path];
+            var existingNode = existingNodes[path];
             var command;
             var description;
-            if (previousState) {
-                var nextState = event.state;
-                if (nextState === previousState) {
+            var state = event.state;
+            var hidden;
+            if (existingNode) {
+                var previousState = existingNode.state;
+                if (state === previousState) {
                     return;
                 }
 
-                stateCounts[nextState]++;
+                stateCounts[state]++;
                 stateCounts[previousState]--;
-                description = "'" + path + "' now in " + nextState + " (was: " + previousState + ")",
+                description = "'" + path + "' now in " + state + " (was: " + previousState + ")",
                 command = {
                     forward: function() {
-                        console.log("-> " + path + ": " + previousState + " -> " + nextState);
-                        layout.setState(path, nextState);
+                        console.log("-> " + path + ": " + previousState + " -> " + state);
+                        layout.setState(path, state);
                     },
                     backward: function() {
-                        console.log("<- " + path + ": " + nextState + " -> " + previousState);
+                        console.log("<- " + path + ": " + state + " -> " + previousState);
                         layout.setState(path, previousState);
                     }
                 };
+                hidden = existingNode.hidden;
+                existingNode.state = state;
             } else {
-                stateCounts[event.state]++;
-                description = "'" + path + "' added  in " + event.state,
+                stateCounts[state]++;
+                hidden = !!event.hidden;
+                description = "'" + path + "' added  in " + state + (hidden ? " (hidden)" : ""),
                 command = {
                     forward: function() {
                         console.log("++ " + path);
-                        layout.addNode(path);
+                        layout.addNode(path, hidden);
                     },
                     backward: function() {
                         console.log("-- " + path);
                         layout.removeNode(path);
                     }
                 };
+                existingNodes[path] = {
+                    state: state,
+                    hidden: hidden
+                }
             }
-            existingNodes[path] = event.state;
             return {
                 description: description,
                 command: command,
-                stateCounts: stateCounts
+                stateCounts: stateCounts,
+                hidden: hidden
             };
         };
 
