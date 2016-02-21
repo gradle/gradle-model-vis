@@ -157,6 +157,11 @@
                 var nodes = tree.nodes(displayRoot);
                 var links = tree.links(nodes);
 
+                var rootX = displayRoot.x;
+                nodes.forEach(function (node) {
+                    node.x -= rootX - 90;
+                });
+
                 var link = svg.selectAll(".link")
                     .data(links);
                 link
