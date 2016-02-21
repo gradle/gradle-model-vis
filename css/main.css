@@ -10,7 +10,7 @@
     width: 600px;
 }
 
-.node {
+.node circle {
     cursor: pointer;
 }
 
@@ -38,6 +38,10 @@ text {
     font-family: sans-serif;
     stroke: none;
     fill: black;
+}
+
+text.collapsed {
+    font-weight: bold;
 }
 
 .content {

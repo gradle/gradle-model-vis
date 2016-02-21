@@ -3,34 +3,42 @@
 
     module.factory("LayoutFactory", function () {
         return function (svg, d3, width, height) {
-            var createNode = function (name, parentPath, hidden) {
+            var collapsed = {};
+
+            var createNode = function (name, parent, hidden) {
+                var path = (parent && parent.path) ? parent.path + "." + name : name;
+                if (!(path in collapsed)) {
+                    collapsed[path] = false;
+                }
                 var children = [];
                 var node = {
                     name: name,
-                    parent: parentPath,
+                    path: path,
+                    parent: parent,
                     hidden: hidden,
                     state: "Registered",
                     addChild: function (childName, hidden) {
-                        var path = parentPath ? parentPath + "." + name : name;
-                        children.push(createNode(childName, path, hidden));
+                        children.push(createNode(childName, node, hidden));
                         children.sort(function (a, b) { return a.name.localeCompare(b.name); });
                         node.children = children;
+                    },
+                    isCollapsed: function () {
+                        return collapsed[path] || (parent && parent.isCollapsed());
                     }
                 };
                 return node;
             }
 
-            var cloneNonHiddenNode = function (node) {
+            var cloneMatching = function (filter, node) {
                 var children;
                 if (node.children) {
-                    children = node.children
-                    .filter(function (child) { return !child.hidden; })
-                    .map(cloneNonHiddenNode);
+                    children = node.children.filter(filter).map(cloneMatching.bind(this, filter));
                 } else {
                     children = [];
                 }
                 return {
                     name: node.name,
+                    path: node.path,
                     parent: node.parent,
                     state: node.state,
                     children: children
@@ -38,7 +46,6 @@
             }
 
             var root = createNode("", null, false);
-
             var tree = d3.layout.tree()
                 .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / (a.depth + 1); });
 
@@ -130,13 +137,12 @@
                 return depth;
             }
 
-            this.repaint = function (showHidden) {
-                var displayRoot;
-                if (showHidden) {
-                    displayRoot = root;
-                } else {
-                    displayRoot = cloneNonHiddenNode(root);
-                }
+            var repaint = function (showHidden) {
+                var displayRoot = cloneMatching(function (node) {
+                    var collapsedChild = (node.parent && node.parent.isCollapsed());
+                    var result = !collapsedChild && (showHidden || !node.hidden);
+                    return result;
+                }, root);
 
                 var maxDepth = getMaxDepth(displayRoot, 0);
                 tree.size([360, maxDepth * 100]);
@@ -177,21 +183,35 @@
 
                 nodeGroup.append("circle")
                     .attr("r", 6)
-                    .attr("class", function(d) { return d.state; });
+                    .attr("class", function(d) { return d.state; })
+                    .on("click", function (d) {
+                        collapsed[d.path] = !collapsed[d.path];
+                        repaint(showHidden);
+                    });
 
                 nodeGroup.append("text")
                     .attr("dy", ".31em")
                     .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
                     .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+                    .attr("class", function (d) {
+                        return collapsed[d.path] ? "collapsed" : null;
+                    })
                     .text(function(d) {
                         var name = d.name;
                         var idx = name.lastIndexOf(".");
                         if (idx !== -1) {
                             name = name.substring(idx + 1);
                         }
-                        return name ? name : "ROOT";
+                        if (!name) {
+                            name = "ROOT";
+                        }
+                        if (collapsed[d.path]) {
+                            name = name + " [+]";
+                        }
+                        return name;
                     });
             };
+            this.repaint = repaint;
         };
     });
 })();
