@@ -25,7 +25,7 @@ System.in.eachLine { line ->
                     path: normalize(match[0][2]),
                     type: 'state-changed',
                     state: 'Registered',
-                    hidden: match[0][3]=='true'?'true':'false'
+                    hidden: match[0][3]=='true'? true : false
             ]
         }
     }

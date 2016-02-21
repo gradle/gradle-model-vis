@@ -16,7 +16,7 @@
         "path": "tasks",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
@@ -35,280 +35,280 @@
         "path": "serviceRegistry",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "buildDir",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "projectIdentifier",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "extensionContainer",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "fileOperations",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "taskFactory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "typeConverter",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "nodeInitializerRegistry",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "structBindingsStore",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "proxyFactory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "schemaStore",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "tasks.help",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.projects",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.tasks",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.properties",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.dependencyInsight",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.dependencies",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.buildEnvironment",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.components",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.model",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.init",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.wrapper",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.clean",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.assemble",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.check",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "tasks.build",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "sources",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "languageSourceSetFactory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "binarySpecFactory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "binaries",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "languageTransforms",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "platforms",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "componentSpecFactory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "platformResolver",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "components",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "javaInstallationProbe",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "javaToolChain",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "projectLayout",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "javaInstallations",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "javaToolChains",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
@@ -879,7 +879,7 @@
         "path": "components.comp",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
@@ -994,14 +994,14 @@
         "path": "components.comp.binaries",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "components.comp.sources",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
@@ -1152,7 +1152,7 @@
         "path": "components.comp.binaries.bin",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
@@ -1255,7 +1255,7 @@
         "path": "components.comp.binaries.jar",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
@@ -1322,28 +1322,28 @@
         "path": "components.comp.binaries.bin.generatedDirectory",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "components.comp.binaries.bin.pegasusClientComponentSpec",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "true"
+        "hidden": true
     },
     {
         "project": ":",
         "path": "components.comp.binaries.bin.sources",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
         "path": "components.comp.binaries.bin.tasks",
         "type": "state-changed",
         "state": "Registered",
-        "hidden": "false"
+        "hidden": false
     },
     {
         "project": ":",
