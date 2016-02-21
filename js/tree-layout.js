@@ -153,7 +153,7 @@
                     .enter()
                     .append("path")
                     .attr("class", function (d) {
-                        if (d.source.hidden || d.target.hidden) {
+                        if (d.target.hidden) {
                             return "link isHidden";
                         } else {
                             return "link";
@@ -190,8 +190,7 @@
                             name = name.substring(idx + 1);
                         }
                         return name ? name : "ROOT";
-                    })
-                    .style("fill", "#000000");
+                    });
             };
         };
     });

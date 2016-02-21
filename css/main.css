@@ -14,12 +14,13 @@
     cursor: pointer;
 }
 
-.node.isHidden {
-    stroke-dasharray: 1.5, 1.5;
-}
-
 .link.isHidden {
     stroke-dasharray: 2.5, 2.5;
+}
+
+.node.isHidden text {
+    font-style: italic;
+    fill: #888;
 }
 
 circle {
