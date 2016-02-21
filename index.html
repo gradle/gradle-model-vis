@@ -39,6 +39,36 @@
         <input class="form-control" ng-model="commands[time - 1].description" ng-disabled="true" />
     </div>
 
+    <div class="content">
+        <svg id="canvas"/>
+        <table class="legend">
+            <tbody>
+                <tr ng-repeat="state in states">
+                    <td>
+                        <svg width="16" height="16">
+                            <circle class="{{state}}" r="7" cx="8" cy="8" />
+                        </svg>
+                    </td>
+                    <td class="count">
+                        <span>{{stateCounts[state]}}</span>
+                    </td>
+                    <td>
+                        <span>{{state}}</span>
+                    </td>
+                </tr>
+                <tr class="sumRow">
+                    <td></td>
+                    <td class="count">
+                        <span>{{count()}}</span>
+                    </td>
+                    <td>
+                        <span>Sum</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <script src="js/force-layout.js"></script>
     <script src="js/tree-layout.js"></script>
     <script src="js/main.js"></script>

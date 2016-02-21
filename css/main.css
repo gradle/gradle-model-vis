@@ -31,16 +31,23 @@ text {
     fill: black;
 }
 
-#content {
+.content {
     position: absolute;
 }
 
-#legend {
-    position: absolute;;
+.legend {
+    font-size: 9pt;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 140px;
-    height: 180px;
+}
+
+.legend td {
+    padding: 2px;
+}
+
+.legend td.count {
+    text-align: right;
 }
 
 .Registered { stroke: #aec7e8; fill: #FBFFFF; }
@@ -52,3 +59,7 @@ text {
 .Finalized { stroke: #e377c2; fill: #FFDDFF; }
 .SelfClosed { stroke: #B2B2B2; fill: #E1E1E1; }
 .GraphClosed { stroke: #7f7f7f; fill: #CCCCCC; }
+
+tr.sumRow {
+    border-top: 1px solid black;
+}

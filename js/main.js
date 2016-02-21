@@ -4,45 +4,6 @@
     var width = 1200,
         height = 1000;
 
-    var content = d3.select("body").append("div").attr("id", "content");
-
-    var svg = content.append("svg")
-        .attr("id", "canvas")
-        .attr("width", width)
-        .attr("height", height)
-        .call(d3.behavior.zoom().on("zoom", function () {
-            svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
-        }))
-        .append("g");
-
-    var legendBox = content.append("svg")
-        .attr("id", "legend");
-
-    var legend = legendBox.selectAll(".legend")
-        .data(["Registered", "Discovered", "Created", "DefaultsApplied", "Initialized", "Mutated", "Finalized", "SelfClosed", "GraphClosed"]);
-
-    var legendGroup = legend.enter()
-        .append("g")
-        .attr("class", "legend");
-
-    var legendCircle = legendGroup.append("circle")
-        .attr("r", 6)
-        .attr("cx", 8)
-        .attr("cy", function(d, idx) {
-            return 10 + idx * 18;
-        })
-        .attr("class", function (d) { return d; });
-
-    var legendText = legendGroup.append("text")
-        .attr("x", 20)
-        .attr("y", function(d, idx) {
-            return 13 + idx * 18;
-        })
-        .text(function(d) {
-            return d;
-        });
-    legend.exit().remove();
-
     var dataFile = location.hash ? location.hash.substring(1) : "samples/gradle-model.json";
 
     app.factory("dataLoader", function ($q) {
@@ -71,6 +32,26 @@
                 $scope.time = time;
             }
         };
+        $scope.states = ["Registered", "Discovered", "Created", "DefaultsApplied", "Initialized", "Mutated", "Finalized", "SelfClosed", "GraphClosed"];
+        $scope.stateCounts = {};
+        $scope.states.forEach(function (state) {
+            $scope.stateCounts[state] = 0;
+        });
+        $scope.count = function() {
+            return $scope.states.reduce(function (count, state) {
+                return count + $scope.stateCounts[state];
+            }, 0);
+        };
+
+        var svg = d3.select("#canvas")
+            .attr("id", "canvas")
+            .attr("width", width)
+            .attr("height", height)
+            .call(d3.behavior.zoom().on("zoom", function () {
+                svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+            }))
+            .append("g");
+
         dataLoader(dataFile).then(function (events) {
             var layout = new LayoutFactory(svg, d3, width, height);
             $scope.commands = processEvents(events, layout);
@@ -95,13 +76,13 @@
             var redrawUntil = function(targetTime, time) {
                 if (time < targetTime) {
                     while (time < targetTime) {
-                        $scope.commands[time].forward();
+                        $scope.commands[time].forward($scope.stateCounts);
                         time++;
                     }
                 } else {
                     while (time > targetTime) {
                         time--;
-                        $scope.commands[time].backward();
+                        $scope.commands[time].backward($scope.stateCounts);
                     }
                 }
                 layout.repaint();
@@ -130,26 +111,32 @@
                 var nextState = event.state;
                 var previousState = existingNode.state;
                 commands.push({
-                    description: event.path + ": " + previousState + " -> " + nextState,
-                    forward: function() {
+                    description: "'" + event.path + "' now in " + nextState + " (was: " + previousState + ")",
+                    forward: function(stateCounts) {
                         console.log("-> " + event.path + ": " + previousState + " -> " + nextState);
+                        stateCounts[nextState]++;
+                        stateCounts[previousState]--;
                         layout.setState(event.path, nextState);
                     },
-                    backward: function() {
+                    backward: function(stateCounts) {
                         console.log("<- " + event.path + ": " + nextState + " -> " + previousState);
+                        stateCounts[nextState]--;
+                        stateCounts[previousState]++;
                         layout.setState(event.path, previousState);
                     }
                 });
                 existingNode.state = event.state;
             } else {
                 commands.push({
-                    description: event.path + ": Registered",
-                    forward: function() {
+                    description: "'" + event.path + "' added  in " + event.state,
+                    forward: function(stateCounts) {
                         console.log("++ " + event.path);
+                        stateCounts[event.state]++;
                         layout.addNode(event.path);
                     },
-                    backward: function() {
+                    backward: function(stateCounts) {
                         console.log("-- " + event.path);
+                        stateCounts[event.state]--;
                         layout.removeNode(event.path);
                     }
                 });
