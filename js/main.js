@@ -186,7 +186,10 @@
 
         projects.forEach(function (project) {
             var path = normalizePath(project, "");
-            existingNodes[path] = "Registered";
+            existingNodes[path] = {
+                state: "Registered",
+                hidden: false
+            };
             stateCounts["Registered"]++;
             layout.addNode(path);
         });

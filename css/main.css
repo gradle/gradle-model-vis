@@ -14,6 +14,14 @@
     cursor: pointer;
 }
 
+.node.isHidden {
+    stroke-dasharray: 1.5, 1.5;
+}
+
+.link.isHidden {
+    stroke-dasharray: 2.5, 2.5;
+}
+
 circle {
     stroke-width: 1.5px;
 }

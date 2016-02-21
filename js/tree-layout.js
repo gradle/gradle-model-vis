@@ -152,7 +152,13 @@
                 link
                     .enter()
                     .append("path")
-                    .attr("class", "link")
+                    .attr("class", function (d) {
+                        if (d.source.hidden || d.target.hidden) {
+                            return "link isHidden";
+                        } else {
+                            return "link";
+                        }
+                    })
                     .attr("d", diagonal);
 
                 var node = svg.selectAll(".node")
@@ -160,7 +166,13 @@
                 var nodeGroup = node
                     .enter()
                     .append("g")
-                    .attr("class", "node")
+                    .attr("class", function (d) {
+                        if (d.hidden || d.hidden) {
+                            return "node isHidden";
+                        } else {
+                            return "node";
+                        }
+                    })
                     .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
                 nodeGroup.append("circle")
